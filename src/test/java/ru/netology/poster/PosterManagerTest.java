@@ -1,13 +1,14 @@
 package ru.netology.poster;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;
 
 public class PosterManagerTest {
 
-    PosterManager manager = new PosterManager();
+    PosterManager managerWithoutArgs = new PosterManager();
     PosterManager managerWithArgs = new PosterManager(4);
     PosterManager mockitoManager = mock(PosterManager.class);
 
@@ -21,33 +22,16 @@ public class PosterManagerTest {
     String movie8 = "Film 8";
 
 
-    @Test
-    public void shouldAddMovie() {
-        manager.addMovie(movie1);
-        manager.addMovie(movie2);
+    @BeforeEach
+    public void setup() {
+        //Менеджер с аргументами по умолчанию (5 штук)
+        managerWithoutArgs.addMovie(movie1);
+        managerWithoutArgs.addMovie(movie2);
+        managerWithoutArgs.addMovie(movie3);
+        managerWithoutArgs.addMovie(movie4);
+        managerWithoutArgs.addMovie(movie5);
 
-        String[] expected = {movie1, movie2};
-        String[] actual = manager.findAll();
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldCorrectReverseArrayWithoutCount() {
-        manager.addMovie(movie1);
-        manager.addMovie(movie2);
-        manager.addMovie(movie3);
-        manager.addMovie(movie4);
-        manager.addMovie(movie5);
-
-        String[] expected = {movie5, movie4, movie3, movie2, movie1};
-        String[] actual = manager.getLastMovies();
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldCorrectReverseArrayWithCount() {
+        //Менеджер с выставляемыми аргументами
         managerWithArgs.addMovie(movie1);
         managerWithArgs.addMovie(movie2);
         managerWithArgs.addMovie(movie3);
@@ -56,7 +40,26 @@ public class PosterManagerTest {
         managerWithArgs.addMovie(movie6);
         managerWithArgs.addMovie(movie7);
         managerWithArgs.addMovie(movie8);
+    }
 
+    @Test
+    public void shouldAddMovie() {
+        String[] expected = {movie1, movie2, movie3, movie4, movie5};
+        String[] actual = managerWithoutArgs.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldCorrectReverseArrayWithoutArgs() {
+        String[] expected = {movie5, movie4, movie3, movie2, movie1};
+        String[] actual = managerWithoutArgs.getLastMovies();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldCorrectReverseArrayWithArgs() {
         String[] expected = {movie8, movie7, movie6, movie5};
         String[] actual = managerWithArgs.getLastMovies();
 
