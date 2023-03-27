@@ -37,7 +37,7 @@ public class PosterManager {
         for (int i = 0; i < reversed.length; i++) {
             reversed[i] = all[all.length - 1 - i];
         }
-        String[] reversedWithCount = new String[this.getLastMoviesCount()];
+        String[] reversedWithCount = new String[lengthLast];
         for (int i = 0; i < lengthLast; i++) {
             reversedWithCount[i] = reversed[i];
         }
