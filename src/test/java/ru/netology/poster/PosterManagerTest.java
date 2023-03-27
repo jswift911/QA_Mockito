@@ -12,14 +12,14 @@ public class PosterManagerTest {
     PosterManager managerWithArgs = new PosterManager(4);
     PosterManager mockitoManager = mock(PosterManager.class);
 
-    String movie1 = "Film 1";
-    String movie2 = "Film 2";
-    String movie3 = "Film 3";
-    String movie4 = "Film 4";
-    String movie5 = "Film 5";
-    String movie6 = "Film 6";
-    String movie7 = "Film 7";
-    String movie8 = "Film 8";
+    String movie1 = "Movie 1";
+    String movie2 = "Movie 2";
+    String movie3 = "Movie 3";
+    String movie4 = "Movie 4";
+    String movie5 = "Movie 5";
+    String movie6 = "Movie 6";
+    String movie7 = "Movie 7";
+    String movie8 = "Movie 8";
 
 
     @BeforeEach
