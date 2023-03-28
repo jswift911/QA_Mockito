@@ -28,7 +28,7 @@ public class PosterManager {
 
         if (tmp.length > fixedLength) {
             String[] fixedLengthTmp = new String[fixedLength];
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < fixedLength; i++) {
                 fixedLengthTmp[i] = movies[i];
             }
         } else {
