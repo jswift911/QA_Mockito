@@ -43,12 +43,7 @@ public class PosterManager {
 
     public String[] getLastMovies() {
         String[] all = this.findAll();
-        int lengthLast = this.getLastMoviesCount();
         String[] reversed = new String[all.length];
-
-        if (all.length < lengthLast) {
-            reversed = new String[all.length];
-        }
 
         for (int i = 0; i < reversed.length; i++) {
             reversed[i] = all[all.length - 1 - i];
