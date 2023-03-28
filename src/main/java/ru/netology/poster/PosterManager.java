@@ -18,12 +18,23 @@ public class PosterManager {
     }
 
     public void addMovie(String movie) {
+        int fixedLength = this.getLastMoviesCount();
+
         String[] tmp = new String[movies.length + 1];
+
         for (int i = 0; i < movies.length; i++) {
             tmp[i] = movies[i];
         }
-        tmp[tmp.length - 1] = movie;
-        movies = tmp;
+
+        if (tmp.length > fixedLength) {
+            String[] fixedLengthTmp = new String[fixedLength];
+            for (int i = 0; i < 3; i++) {
+                fixedLengthTmp[i] = movies[i];
+            }
+        } else {
+            tmp[tmp.length - 1] = movie;
+            movies = tmp;
+        }
     }
 
     public String[] findAll() {
@@ -34,11 +45,18 @@ public class PosterManager {
         String[] all = this.findAll();
         int lengthLast = this.getLastMoviesCount();
         String[] reversed = new String[all.length];
+
+        if (all.length < lengthLast) {
+            reversed = new String[all.length];
+        }
+
         for (int i = 0; i < reversed.length; i++) {
             reversed[i] = all[all.length - 1 - i];
         }
-        String[] reversedWithCount = new String[lengthLast];
-        for (int i = 0; i < lengthLast; i++) {
+
+        String[] reversedWithCount = new String[reversed.length];
+
+        for (int i = 0; i < reversedWithCount.length; i++) {
             reversedWithCount[i] = reversed[i];
         }
         return reversedWithCount;
